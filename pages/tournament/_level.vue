@@ -83,9 +83,20 @@ export default {
       filterInputString: search ? search : ""
     };
   },
-  fetch({ store, params: { level = "" }, query: { page = 1, search = "" } }) {
+  fetch({
+    error,
+    store,
+    params: { level = "" },
+    query: { page = 1, search = "" }
+  }) {
     store.commit("tournament/updateFilterString", search ? search : "");
-    store.commit("tournament/updateFilterLevel", level ? level : "");
+    try {
+      if (level) {
+        store.commit("tournament/updateFilterLevel", level ? level : "");
+      }
+    } catch (e) {
+      error({ statusCode: 404 });
+    }
     return Promise.all([
       store.dispatch("tournament/loadSuspectsPlayers"),
       store.dispatch("tournament/loadFilteredListPage", {

@@ -108,6 +108,9 @@ export const mutations = {
         state.filterString = value
     },
     updateFilterLevel(state, value) {
+        if (levels.indexOf(value) === -1) {
+            throw new Error('Unknown level')
+        }
         state.filterLevel = value
     }
 }
