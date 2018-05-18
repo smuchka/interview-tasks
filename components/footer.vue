@@ -1,6 +1,6 @@
 <template>
     <footer class="text-muted">
-        <div class="container">
+        <div class="container my-4">
             <p class="float-right">
                 <a href="https://github.com/smuchka" target="_blank"><img class="logo-github" src="~/assets/images/github_128.png" alt=""></a>
             </p>

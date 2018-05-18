@@ -53,7 +53,8 @@
                 </template>
             </b-table>
 
-            <b-pagination 
+            <b-pagination
+                size="sm"
                 variant="info"
                 v-if="totalRows"
                 :total-rows="totalRows" 
