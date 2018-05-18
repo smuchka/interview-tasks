@@ -29,11 +29,18 @@
                 </b-col>
                 <b-col md="6" class="my-2 text-right">
                   <b-button-group>
-                    <b-button 
-                      v-for="(el, index) in listLevels"
-                      :key="index"
-                      :class="{'btn-outline-secondary': filterLevel !== el, 'text-light btn-primary': filterLevel === el}"
-                      :to="{ name: 'tournament-level', params: { level: (filterLevel !== el ? el : null) }}">{{el}}</b-button>
+                    <template v-for="(el, index) in listLevels">
+                      <b-button 
+                        v-if="filterLevel !== el"
+                        :key="index"
+                        :class="{'btn-outline-secondary': filterLevel !== el, 'text-light btn-primary': filterLevel === el}"
+                        :to="{ name: 'app-tournament-level', params: { level: el }}">{{el}}</b-button>
+                      <b-button 
+                        v-else
+                        :key="index"
+                        :class="{'btn-outline-secondary': filterLevel !== el, 'text-light btn-primary': filterLevel === el}"
+                        :to="{ name: 'app-tournament-level', params: { level: null }}">{{el}}</b-button>
+                    </template>
                   </b-button-group>
                 </b-col>
             </b-row>
@@ -48,7 +55,7 @@
                 <template slot="level" slot-scope="data">
                   <nuxt-link 
                     v-if="data.value && (filterLevel !== data.value)"
-                    :to="{ name: 'tournament-level', params: { level: data.value }}">{{data.value}}</nuxt-link>
+                    :to="{ name: 'app-tournament-level', params: { level: data.value }}">{{data.value}}</nuxt-link>
                   <span v-else>{{data.value}}</span>
                 </template>
             </b-table>
@@ -77,11 +84,9 @@ export default {
       titleTemplate: `${this.title} %s`
     };
   },
-  validate({ error, params: { level = "" }, query, store }) {
+  validate({ error, params: { level = null }, query, store }) {
     try {
-      if (level) {
-        store.commit("tournament/updateFilterLevel", level ? level : "");
-      }
+      store.commit("tournament/updateFilterLevel", level);
       return true;
     } catch (e) {
       return error({ statusCode: 400, message: e.message });
@@ -109,6 +114,9 @@ export default {
         filterLevel: level
       })
     ]);
+  },
+  created() {
+    console.log("created");
   },
   computed: {
     ...mapGetters({

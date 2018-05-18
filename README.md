@@ -4,6 +4,6 @@
 Detailed description of the test task can be seen 
 [here](./static/task.pdf)
 
-Visit [example](https://interview-tournament-player-osluierpkj.now.sh "Show example") deployed by use [NOW](https://zeit.co/now) CLI
+Visit [example](https://interview-tournament-player-ichmkxydbn.now.sh "Show example") deployed by use [NOW](https://zeit.co/now) CLI
 
-![PLAYER TOURNAMENT 2018](screen.png "PLAYER TOURNAMENT 2018")
+![PLAYER TOURNAMENT 2018](./assets/images/screen.png "PLAYER TOURNAMENT 2018")

@@ -108,8 +108,10 @@ export const mutations = {
         state.filterString = value
     },
     updateFilterLevel(state, value) {
-        if (levels.indexOf(value) === -1) {
-            throw new Error('Unknown tournament level')
+        if (value !== null) {
+            if (levels.indexOf(value) === -1) {
+                throw new Error('Unknown tournament level')
+            }
         }
         state.filterLevel = value
     }
