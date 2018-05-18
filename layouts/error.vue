@@ -1,24 +1,22 @@
 <template>
-    <!-- Error Page -->
+    <!-- error page -->
     <div class="error">
         <div class="container-floud">
             <div class="col-xs-12 ground-color text-center">
-                
                 <div class="container-error-404">
-                    <div class="clip"><div class="shadow"><span class="digit thirdDigit"></span></div></div>
-                    <div class="clip"><div class="shadow"><span class="digit secondDigit"></span></div></div>
+                    <div class="clip"><div class="shadow"><span class="digit thirddigit"></span></div></div>
+                    <div class="clip"><div class="shadow"><span class="digit seconddigit"></span></div></div>
                     <div class="clip">
-                        <a href="https://codepen.io/Ahmed_B_Hameed/pen/LkqNmp?editors=0010" 
+                        <a href="https://codepen.io/ahmed_b_hameed/pen/lkqnmp?editors=0010" 
                             target="_blank"
                             style="position: absolute; right: 10px; color: #999999bd;">© reuse</a>
-                        <div class="shadow"><span class="digit firstDigit"></span></div></div>
-                    <!-- <div class="msg">OH!<span class="triangle"></span></div> -->
+                        <div class="shadow"><span class="digit firstdigit"></span></div></div>
                 </div>
-                <h2 class="h1">{{message}}</h2>
+                <h2 class="h1 my-4"><em>{{message}}</em></h2>
             </div>
         </div>
     </div>
-    <!-- Error Page -->
+    <!-- error page -->
 </template>
 
 <script>
@@ -63,7 +61,6 @@ export default {
       .reduce((acum, item, index) => {
         let ci = setInterval(
           ({ selector, num }) => {
-            // "use strict";
             if (i > 40) {
               clearInterval(ci);
               selector.textContent = num;
@@ -78,30 +75,7 @@ export default {
             selector: item
           }
         );
-
-        console.log(index, item);
       }, []);
-
-    // loop2 = setInterval(() => {
-    //   "use strict";
-    //   if (i > 80) {
-    //     clearInterval(loop2);
-    //     selector2.textContent = 0;
-    //   } else {
-    //     selector2.textContent = this.randomNum();
-    //     i++;
-    //   }
-    // }, time);
-    // loop1 = setInterval(() => {
-    //   "use strict";
-    //   if (i > 100) {
-    //     clearInterval(loop1);
-    //     selector1.textContent = 4;
-    //   } else {
-    //     selector1.textContent = this.randomNum();
-    //     i++;
-    //   }
-    // }, time);
   },
   methods: {
     randomNum() {
@@ -147,7 +121,7 @@ export default {
 }
 .error h2   /*Contrall*/
  {
-  font-size: 32px;
+  font-size: 26px;
 }
 .error .msg /*Contrall*/
  {
@@ -269,7 +243,7 @@ export default {
   }
   .error h2   /*Contrall*/
  {
-    font-size: 24px;
+    font-size: 20px;
   }
   .error .msg /*Contrall*/
  {

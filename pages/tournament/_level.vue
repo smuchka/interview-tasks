@@ -77,6 +77,16 @@ export default {
       titleTemplate: `${this.title} %s`
     };
   },
+  validate({ error, params: { level = "" }, query, store }) {
+    try {
+      if (level) {
+        store.commit("tournament/updateFilterLevel", level ? level : "");
+      }
+      return true;
+    } catch (e) {
+      return error({ statusCode: 400, message: e.message });
+    }
+  },
   asyncData({ store, query: { page = 1, search = "" } }) {
     return {
       formCurrentPage: page ? +page : null,
@@ -90,13 +100,7 @@ export default {
     query: { page = 1, search = "" }
   }) {
     store.commit("tournament/updateFilterString", search ? search : "");
-    try {
-      if (level) {
-        store.commit("tournament/updateFilterLevel", level ? level : "");
-      }
-    } catch (e) {
-      error({ statusCode: 404 });
-    }
+
     return Promise.all([
       store.dispatch("tournament/loadSuspectsPlayers"),
       store.dispatch("tournament/loadFilteredListPage", {
